@@ -9,10 +9,7 @@ For fast matrix diagonalization, LAPACK is used (and needed, of course).
 The project includes the 'xdrfile' library of GROMACS. Thus, you can
 use data files written as ASCII data as well as .xtc-trajectories.
 
-For bug-reports, write to
-   sittel@lettis.net
-or
-   florian.sittel@physik.uni-freiburg.de
+For bug-reports just open an issue.
 
 Happy Computing.
 
