@@ -176,10 +176,13 @@ namespace FastPCA {
       read_blockwise(input_file
                    , [&hists,binwidth,n_bins](Matrix<double>& m) {
         std::size_t i, j, i_bin;
-        #pragma omp parallel for default(none)\
+        //#pragma omp parallel for default(none)\
                                  private(j,i,i_bin)\
                                  firstprivate(n_cols,n_bins,binwidth)\
                                  shared(hists,m)
+        #pragma omp parallel for private(j,i,i_bin)\
+                    firstprivate(n_cols,n_bins,binwidth)\
+                    shared(hists,m)
         for (j=0; j < m.n_cols(); ++j) {
           for (i=0; i < m.n_rows(); ++i) {
             for (i_bin=0; i_bin < n_bins; ++i_bin) {
@@ -340,8 +343,11 @@ namespace FastPCA {
                       , n_candidates_per_col] (Matrix<double>& m) {
           std::size_t j;
           std::size_t ic;
-          #pragma omp parallel for default(none)\
-                                   private(j,ic)\
+        //#pragma omp parallel for default(none)\
+                  private(j,ic)\
+                  firstprivate(n_cols,n_candidates_per_col)\
+                  shared(m,candidates,n_jumps)
+          #pragma omp parallel for private(j,ic)\
                                    firstprivate(n_cols,n_candidates_per_col)\
                                    shared(m,candidates,n_jumps)
           for (j=0; j < n_cols; ++j) {
@@ -465,4 +471,3 @@ namespace FastPCA {
 
   } // end namespace FastPCA::Periodic
 } // end namespace FastPCA
-
