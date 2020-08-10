@@ -24,28 +24,28 @@ If you use the code for published works, please cite as
 # Installation
 This package can be installed with conda via
 ```
-    conda install fastpca -c conda-forge
+conda install fastpca -c conda-forge
 ```
 If conda is not available, it can be compiled as well.
 
 # Compilation
 Download this repo
 ```
-    git clone https://github.com/moldyn/FastPCA.git
+git clone https://github.com/moldyn/FastPCA.git
 ```
 If `gcc > 7.x.x` is used, please use the following branch
 ```
-    git clone --branch fix_gcc8 https://github.com/moldyn/FastPCA.git
+git clone --branch fix_gcc8 https://github.com/moldyn/FastPCA.git
 ```
 Create a build-directory in the project root and change into
 that directory:
 ```
-    mkdir build
-    cd build
+mkdir build
+cd build
 ```
 Run cmake, based on the underlying project:
 ```
-    cmake ..
+cmake ..
 ```
 Hopefully, everything went right.
 If not, carefully read the error messages.
@@ -54,7 +54,7 @@ Typical errors are missing dependencies...
 If everything is o.k., run make (on multicore machines, use '-j' to parallelize
 compilation, e.g. 'make -j 4' for up to four parallel jobs):
 ```
-    make
+make
 ```
 Now, you should find the 'fastca' binary in the 'src' folder.
 
